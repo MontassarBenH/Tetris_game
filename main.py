@@ -177,13 +177,11 @@ def draw_fancy_square(x, y, color):
     # Draw the base square
     pygame.draw.rect(screen, color, (x, y, BLOCK_SIZE, BLOCK_SIZE), 0, border_radius=8)
     
-    # Draw a lighter border around the square to give a 3D effect
-    border_color = tuple(min(255, c + 50) for c in color)  # Lighter shade
+    border_color = tuple(min(255, c + 50) for c in color)  
     pygame.draw.rect(screen, border_color, (x, y, BLOCK_SIZE, BLOCK_SIZE), 2, border_radius=8)
     
-    # Draw a darker border inside the square to enhance the 3D effect
     inner_rect = (x + 4, y + 4, BLOCK_SIZE - 8, BLOCK_SIZE - 8)
-    inner_border_color = tuple(max(0, c - 50) for c in color)  # Darker shade
+    inner_border_color = tuple(max(0, c - 50) for c in color) 
     pygame.draw.rect(screen, inner_border_color, inner_rect, 2, border_radius=8)
 
 def main():
@@ -199,7 +197,7 @@ def main():
         score = 0
         last_fall_time = time.time()
         fast_fall = False
-        last_speed_increase = 0  # Track when we last increased the speed
+        last_speed_increase = 0 
         
         while True:
             current_time = time.time()
@@ -241,7 +239,7 @@ def main():
                     
                     # Increase fall speed every 1000 points
                     if score // 1000 > last_speed_increase:
-                        base_fall_speed = max(0.1, base_fall_speed * 0.9)  # Increase speed by 10%, but not faster than 0.1
+                        base_fall_speed = max(0.1, base_fall_speed * 0.9) 
                         last_speed_increase = score // 1000
                     
                     current_piece = new_piece(base_fall_speed)
@@ -274,7 +272,7 @@ def main():
                 draw_text(f"High Score: {high_score} ({high_score_name})", 22, WHITE, SCREEN_WIDTH // 2, 40)
 
             pygame.display.flip()
-            clock.tick(60)  # Maintain 60 FPS for smooth animation
+            clock.tick(60) 
             last_fall_time = current_time
 
 if __name__ == '__main__':
